@@ -16,7 +16,6 @@ local environment = require("cmake-tools.environment")
 local file_picker = require("cmake-tools.file_picker")
 
 local config = Config:new(const)
-
 local cmake = {}
 
 local full_cmd = ""
@@ -245,6 +244,8 @@ function cmake.generate(opt, callback)
   config:generate_build_directory()
 
   local args = {
+    "-G",
+    config.generator,
     "-B",
     config.build_directory.filename,
     "-S",
@@ -1442,10 +1443,8 @@ function cmake.select_cwd(cwd_path)
         --	end
       end)
     )
-    cmake.generate({ bang = false, fargs = {} }, nil)
   elseif cwd_path.args then
     config.cwd = vim.fn.resolve(cwd_path.args)
-    cmake.generate({ bang = false, fargs = {} }, nil)
   end
 end
 

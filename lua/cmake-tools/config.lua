@@ -23,6 +23,7 @@ local Config = {
     build_options = {},
   }, -- general config
   target_settings = {}, -- target specific config
+  generator = nil,
   executor = nil,
   terminal = nil,
   always_use_terminal = false,
@@ -38,6 +39,7 @@ function Config:new(const)
   self.base_settings.generate_options = const.cmake_generate_options
   self.base_settings.build_options = const.cmake_build_options
   self.executor = const.cmake_executor
+  self.generator = const.cmake_generator
   self.terminal = const.cmake_terminal
   self.always_use_terminal = self.executor.name == "terminal"
 

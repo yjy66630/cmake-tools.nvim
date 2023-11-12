@@ -1,7 +1,8 @@
 local const = {
   cmake_command = "cmake", -- this is used to specify cmake command path
+  cmake_generator = "Unix Makefile",
   cmake_regenerate_on_save = true, -- auto generate when save CMakeLists.txt
-  cmake_generate_options = { "-DCMAKE_EXPORT_COMPILE_COMMANDS=1" }, -- this will be passed when invoke `CMakeGenerate`
+  cmake_generate_options = { "-G Ninja -DCMAKE_EXPORT_COMPILE_COMMANDS=1" }, -- this will be passed when invoke `CMakeGenerate`
   cmake_build_options = {}, -- this will be passed when invoke `CMakeBuild`
   cmake_build_directory = "out/${variant:buildType}", -- this is used to specify generate directory for cmake
   cmake_soft_link_compile_commands = true, -- this will automatically make a soft link from compile commands file to project root dir
